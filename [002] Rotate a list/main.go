@@ -4,7 +4,7 @@ import "fmt"
 
 func main() {
 	numberList := []int{5, 4, 3, 2, 1, 9, 8, 7, 6}
-	rotate := 0
+	rotate := -4
 
 	for rotate <= 10 {
 		fmt.Printf("%v rotated by %v --> %v \n", numberList, rotate, rotateList(numberList, rotate))
@@ -13,6 +13,10 @@ func main() {
 }
 
 func rotateList(inputSlice []int, rotateBy int) []int {
+	for rotateBy < 0 {
+		rotateBy += len(inputSlice)
+	}
+
 	outputSlice := make([]int, len(inputSlice))
 
 	for i := range inputSlice {
