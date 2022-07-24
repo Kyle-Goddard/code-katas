@@ -54,8 +54,6 @@ func main() {
 	for scanner.Scan() {
 		line := scanner.Text()
 		fmt.Println(Wrap(line, maxLineWidth))
-
 	}
-
 	check(scanner.Err())
 }
