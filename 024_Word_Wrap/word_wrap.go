@@ -17,29 +17,27 @@ func check(err error) {
 }
 
 func Wrap(line string, width int) string {
-	split := strings.Split(line, " ")
+	words := strings.Fields(line)
 
-	result, intermediate, addWord := "", "", ""
-
-	for i, word := range split {
-		fmt.Printf("%v: %s\n", i, word)
-		if len(addWord) == 0 {
-			addWord = word
-		} else {
-			addWord = fmt.Sprintf("%s %s", addWord, word)
-		}
-
-		if len(addWord) <= width {
-			intermediate = addWord
-		} else {
-			result = fmt.Sprintf("%s\n%s", result, intermediate)
-			intermediate = ""
-			addWord = ""
-		}
-
+	if len(words) == 0 {
+		return ""
 	}
 
-	return result
+	result := ""
+
+	newLine := words[0]
+
+	for _, word := range words[1:] {
+		if len(newLine)+len(word) < width {
+			newLine = fmt.Sprintf("%s %s", newLine, word)
+		} else {
+			result = fmt.Sprintf("%s%s\n", result, newLine)
+			newLine = word
+		}
+	}
+	result = fmt.Sprintf("%s%s", result, newLine)
+
+	return strings.TrimSuffix(result, "\n")
 }
 
 func main() {
@@ -54,10 +52,9 @@ func main() {
 	scanner.Buffer(buf, maxCapacity)
 
 	for scanner.Scan() {
-		// fmt.Printf("[%s]\n", scanner.Text())
-
 		line := scanner.Text()
-		fmt.Printf("[%s]\n", line)
+		fmt.Println(Wrap(line, maxLineWidth))
+
 	}
 
 	check(scanner.Err())

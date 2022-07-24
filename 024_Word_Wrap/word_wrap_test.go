@@ -9,7 +9,7 @@ func TestWrap(t *testing.T) {
 	wrapWidth := 15
 
 	got := Wrap(line, wrapWidth)
-	want := "Hello, World. \nIt's a \nbeautiful day"
+	want := "Hello, World.\nIt's a\nbeautiful day"
 
 	if got != want {
 		t.Errorf("got %q want %q", got, want)
