@@ -28,7 +28,6 @@ func AlignText(word string, width int, alignment string) (string, error) {
 	case "L":
 		result = word + paddingDots(width-len(word))
 		// result = word + strings.Repeat(".", width-len(word))
-
 		// chose not to use strings.Repeat because it panics if count is negative or if the result of (len(s) * count) overflows.
 
 	case "R":
@@ -66,3 +65,5 @@ func main() {
 
 	fmt.Println(aligned)
 }
+
+// flags package
