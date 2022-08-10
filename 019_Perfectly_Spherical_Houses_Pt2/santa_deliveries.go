@@ -31,7 +31,35 @@ func CountDeliveries(input string) int {
 	return len(housesVisited)
 }
 
+func CountDeliveriesWithRobot(input string) int {
+	directions := parseInstructions(input)
+	housesVisited := map[Coord]int{}
+	followDirectionsWithRobot(directions, housesVisited)
+
+	return len(housesVisited)
+}
+
 func followDirections(directions []Direction, housesVisited map[Coord]int) {
+	santaCoord := Coord{x: 0, y: 0}
+	housesVisited[santaCoord] = 1
+
+	for _, d := range directions {
+		switch d {
+		case North:
+			santaCoord.y += 1
+		case South:
+			santaCoord.y -= 1
+		case East:
+			santaCoord.x += 1
+		case West:
+			santaCoord.x -= 1
+		}
+
+		housesVisited[santaCoord] += 1
+	}
+}
+
+func followDirectionsWithRobot(directions []Direction, housesVisited map[Coord]int) {
 	santaCoord := Coord{x: 0, y: 0}
 	roboCoord := Coord{x: 0, y: 0}
 	locations := [2]Coord{santaCoord, roboCoord}
@@ -100,7 +128,8 @@ func main() {
 	for scanner.Scan() {
 		line := scanner.Text()
 		result := CountDeliveries(line)
-		fmt.Println(result)
+		resultWithRobot := CountDeliveriesWithRobot(line)
+		fmt.Printf("santa: %v,  santa+robot: %v \n", result, resultWithRobot)
 	}
 
 	check(scanner.Err())
