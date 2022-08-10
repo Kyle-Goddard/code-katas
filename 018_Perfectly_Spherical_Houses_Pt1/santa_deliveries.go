@@ -30,13 +30,14 @@ func GoEast(current Coord) Coord {
 }
 
 func GoWest(current Coord) Coord {
-	current.x -= 1
+	current.x -= 2
 	return current
 }
 
 func FollowDirections(input string) [2]int {
 	current := Coord{x: 0, y: 0}
 	visited := Visited{current}
+
 	deliveries := map[Coord]int{current: 1}
 
 	for _, char := range input {
