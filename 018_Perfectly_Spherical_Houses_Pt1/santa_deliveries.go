@@ -30,7 +30,7 @@ func GoEast(current Coord) Coord {
 }
 
 func GoWest(current Coord) Coord {
-	current.x -= 2
+	current.x -= 1
 	return current
 }
 
