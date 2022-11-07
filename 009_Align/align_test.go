@@ -1,4 +1,4 @@
-package main
+package align_test
 
 import (
 	"testing"
@@ -13,28 +13,28 @@ func TestPaddingDots(t *testing.T) {
 	}
 
 	t.Run("one dot", func(t *testing.T) {
-		got := paddingDots(1)
+		got := PaddingDots(1)
 		want := "."
 
 		assertCorrectOutput(t, got, want)
 	})
 
 	t.Run("three dots", func(t *testing.T) {
-		got := paddingDots(3)
+		got := PaddingDots(3)
 		want := "..."
 
 		assertCorrectOutput(t, got, want)
 	})
 
 	t.Run("zero dots", func(t *testing.T) {
-		got := paddingDots(0)
+		got := PaddingDots(0)
 		want := ""
 
 		assertCorrectOutput(t, got, want)
 	})
 
 	t.Run("negative dots", func(t *testing.T) {
-		got := paddingDots(-1)
+		got := PaddingDots(-1)
 		want := ""
 
 		assertCorrectOutput(t, got, want)

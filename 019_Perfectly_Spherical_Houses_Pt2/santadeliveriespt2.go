@@ -1,4 +1,4 @@
-package main
+package santadeliveriespt2
 
 import (
 	"bufio"

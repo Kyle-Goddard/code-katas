@@ -1,4 +1,4 @@
-package main
+package wordwrap_test
 
 import (
 	"testing"

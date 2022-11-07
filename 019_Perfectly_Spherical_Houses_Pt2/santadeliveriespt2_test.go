@@ -1,4 +1,4 @@
-package main
+package santadeliveriespt2_test
 
 import (
 	"testing"

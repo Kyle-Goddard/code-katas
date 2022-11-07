@@ -1,4 +1,4 @@
-package main
+package wordwrap
 
 import (
 	"bufio"
@@ -10,7 +10,7 @@ import (
 
 const maxLineWidth int = 25 // char
 
-func check(err error) {
+func Check(err error) {
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -40,9 +40,9 @@ func Wrap(line string, width int) string {
 	return strings.TrimSuffix(result, "\n")
 }
 
-func main() {
+func RunWrap() {
 	file, err := os.Open("/Users/kyle/Documents/Learning/code-katas/024_Word_Wrap/input_text.txt")
-	check(err)
+	Check(err)
 	defer file.Close()
 
 	scanner := bufio.NewScanner(file)
@@ -55,5 +55,5 @@ func main() {
 		line := scanner.Text()
 		fmt.Println(Wrap(line, maxLineWidth))
 	}
-	check(scanner.Err())
+	Check(scanner.Err())
 }

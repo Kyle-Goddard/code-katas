@@ -1,19 +1,13 @@
-package main
+package validparenthesis
 
 import "fmt"
 
-func main() {
-	str := "(())((()()))"
-	fmt.Printf("%v \n", validParenthesis(str))
-}
-
-func validParenthesis(parens string) bool {
+func ValidParenthesis(parens string) bool {
 	stack := []string{}
 
 	for _, b := range parens {
 		if string(b) == "(" {
 			stack = append(stack, "(")
-
 		} else if string(b) == ")" {
 			if len(stack) > 0 {
 				stack = stack[:len(stack)-1]
@@ -27,4 +21,9 @@ func validParenthesis(parens string) bool {
 	} else {
 		return false
 	}
+}
+
+func main() {
+	str := "(())((()()))"
+	fmt.Printf("%v \n", ValidParenthesis(str))
 }

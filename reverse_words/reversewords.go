@@ -1,4 +1,4 @@
-package main
+package reversewords
 
 import (
 	"fmt"
@@ -6,11 +6,9 @@ import (
 )
 
 func main() {
-
 	str := "The quick brown fox jumps over the lazy  dog."
 
 	fmt.Printf("%s \n", reverseStrBest(str))
-
 }
 
 func reverseStrBest(str string) string {
@@ -50,7 +48,6 @@ func reverseStr(str string) string {
 	}
 
 	return res
-
 }
 
 func reverseWord(word string) string {

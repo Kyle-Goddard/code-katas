@@ -1,4 +1,4 @@
-package main
+package align
 
 import (
 	"errors"
@@ -8,7 +8,7 @@ import (
 	"strconv"
 )
 
-func paddingDots(x int) string {
+func PaddingDots(x int) string {
 	var result string
 	for x > 0 {
 		result += "."
@@ -26,18 +26,18 @@ func AlignText(word string, width int, alignment string) (string, error) {
 
 	switch alignment {
 	case "L":
-		result = word + paddingDots(width-len(word))
+		result = word + PaddingDots(width-len(word))
 		// result = word + strings.Repeat(".", width-len(word))
 		// chose not to use strings.Repeat because it panics if count is negative or if the result of (len(s) * count) overflows.
 
 	case "R":
-		result = paddingDots(width-len(word)) + word
+		result = PaddingDots(width-len(word)) + word
 		// result = strings.Repeat(".", width-len(word)) + word
 
 	case "C":
 		halfPadding := (width - len(word)) / 2
 		remainder := (width - len(word)) % 2
-		result = paddingDots(int(remainder+halfPadding)) + word + paddingDots(int(halfPadding))
+		result = PaddingDots(int(remainder+halfPadding)) + word + PaddingDots(int(halfPadding))
 
 	default:
 		return "", errors.New("invalid arguement: text alignment should be L, R, or C only")
